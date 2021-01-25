@@ -41,3 +41,24 @@ export const getSortedPosts = () => {
     }
   });
 };
+
+//Get Slugs
+export const getAllPostSlugs = () => {
+  const fileNames = fs.readdirSync(postDirectory);
+
+  return fileNames.map((filename) => {
+    return {
+      params: {
+        slug: filename.replace(".mdx", ""),
+      },
+    };
+  });
+};
+
+//Get Post based on Slug
+export const getPostdata = async (slug) => {
+  const fullPath = path.join(postDirectory, `${slug}.mdx`);
+  const postContent = fs.readFileSync(fullPath, "utf8");
+
+  return postContent;
+};
