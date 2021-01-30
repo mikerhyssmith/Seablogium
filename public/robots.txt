@@ -1,3 +1,5 @@
+Sitemap: https://seablogium.com/api/sitemap
+
 User-agent: *
 Allow: /*
 
