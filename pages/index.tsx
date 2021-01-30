@@ -1,4 +1,5 @@
 import { Flex, Heading, Box, Text, List, ListItem } from '@chakra-ui/react'
+import Head from 'next/head'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 import { getSortedPosts } from '../lib/posts'
@@ -15,6 +16,9 @@ export interface IBlogIndex {
 const BlogIndex: FunctionComponent<IBlogIndex> = ({ allPostsData }) => {
   return (
     <Box px={2} py={5}>
+      <Head>
+        <title>Seablogium</title>
+      </Head>
       <Heading mb={9}>Posts</Heading>
       <Flex flexDirection="column">
         <List spacing="3em">
