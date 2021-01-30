@@ -1,19 +1,17 @@
-import Head from 'next/head'
-import { getAllPostSlugs, getPostdata } from '../lib/posts'
 import {
   Box,
-  Text,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
   Heading,
 } from '@chakra-ui/react'
-import renderToString from 'next-mdx-remote/render-to-string'
-import hydrate from 'next-mdx-remote/hydrate'
 import matter from 'gray-matter'
-import AllComponents from '../components/AllComponents'
+import hydrate from 'next-mdx-remote/hydrate'
+import renderToString from 'next-mdx-remote/render-to-string'
+import Head from 'next/head'
 import React from 'react'
+import AllComponents from '../components/AllComponents'
+import { getAllPostSlugs, getPostdata } from '../lib/posts'
 
 const components = AllComponents
 
