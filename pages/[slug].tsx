@@ -1,40 +1,49 @@
 import Head from 'next/head'
 import { getAllPostSlugs, getPostdata } from '../lib/posts'
-import { Box, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Text,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  Heading,
+} from '@chakra-ui/react'
 import renderToString from 'next-mdx-remote/render-to-string'
 import hydrate from 'next-mdx-remote/hydrate'
 import matter from 'gray-matter'
 import AllComponents from '../components/AllComponents'
+import React from 'react'
 
 const components = AllComponents
 
 export default function Posts({ source, frontMatter }) {
   const content = hydrate(source, { components })
   return (
-    <>
+    <Box px={2} py={5}>
       <Head>
         <title>{frontMatter.title}</title>
       </Head>
-      <Box>
-        <Box sx={{ mt: '4rem', textAlign: 'center' }}>
-          <h1>{frontMatter.title}</h1>
-          <Text
-            sx={{
-              width: ['80%', '50%'],
+      <Breadcrumb mb={9} separator={<Heading>/</Heading>}>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">
+            <Heading>Posts</Heading>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
 
-              mx: 'auto',
-            }}
-          >
-            {frontMatter.author}
-            {' / '}
-            <span>{frontMatter.date}</span>
-          </Text>
-        </Box>
+        <BreadcrumbItem isCurrentPage>
+          <BreadcrumbLink href="">
+            <Heading>{frontMatter.title}</Heading>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
+
+      <Box>
         <Box sx={{ mt: '4rem' }}>
           <Box>{content}</Box>
         </Box>
       </Box>
-    </>
+    </Box>
   )
 }
 export async function getStaticPaths() {

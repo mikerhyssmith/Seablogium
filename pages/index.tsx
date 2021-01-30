@@ -1,4 +1,15 @@
-import { Flex, Heading, Box, Text, List, ListItem } from '@chakra-ui/react'
+import {
+  Flex,
+  Heading,
+  Box,
+  Text,
+  List,
+  ListItem,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+} from '@chakra-ui/react'
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
@@ -19,7 +30,13 @@ const BlogIndex: FunctionComponent<IBlogIndex> = ({ allPostsData }) => {
       <Head>
         <title>Seablogium</title>
       </Head>
-      <Heading mb={9}>Posts</Heading>
+      <Breadcrumb mb={9}>
+        <BreadcrumbItem isCurrentPage>
+          <BreadcrumbLink href="/">
+            <Heading>Posts</Heading>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
       <Flex flexDirection="column">
         <List spacing="3em">
           {allPostsData.map(({ slug, date, title, excerpt }) => (
