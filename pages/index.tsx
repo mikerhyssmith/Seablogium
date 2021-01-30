@@ -1,65 +1,65 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { Flex, Heading, Box, Text } from '@chakra-ui/react'
+import Link from 'next/link'
+import React, { FunctionComponent } from 'react'
+import { getSortedPosts } from '../lib/posts'
 
-export default function Home() {
+export interface IBlogIndex {
+  allPostsData: {
+    date: string
+    slug: string
+    title: string
+    excerpt: string
+  }[]
+}
+
+const BlogIndex: FunctionComponent<IBlogIndex> = ({ allPostsData }) => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Box>
+        <Heading>My Blog</Heading>
+        <Flex
+          sx={{
+            flexWrap: 'wrap',
+            mt: '2rem',
+            direction: 'column',
+          }}
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+          {allPostsData.map(({ slug, date, title, excerpt }) => (
+            <Box variant="containers.postCard" sx={{ my: '0.5rem' }} key={slug}>
+              <li>
+                <Box>
+                  <Link key={slug} href="/[slug]" as={`/${slug}`}>
+                    <a>
+                      <Heading
+                        sx={{
+                          fontSize: 'calc(1.6rem + 0.2vw)',
+                          fontWeight: '500',
+                        }}
+                      >
+                        {title}
+                      </Heading>
+                    </a>
+                  </Link>
+
+                  <Box sx={{ my: '0.5rem' }}>{excerpt}</Box>
+
+                  <Text>{date}</Text>
+                </Box>
+              </li>
+            </Box>
+          ))}
+        </Flex>
+      </Box>
+    </>
   )
+}
+export default BlogIndex
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPosts()
+  return {
+    props: {
+      allPostsData,
+    },
+  }
 }
