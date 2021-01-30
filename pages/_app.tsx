@@ -20,7 +20,7 @@ const theme = extendTheme({
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <GoogleFonts href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" />
+      <GoogleFonts href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap" />
 
       <Grid h="100vh" templateColumns="15em 1fr" gap={4}>
         <Sidebar />

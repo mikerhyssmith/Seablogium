@@ -14,8 +14,8 @@ export interface IBlogIndex {
 
 const BlogIndex: FunctionComponent<IBlogIndex> = ({ allPostsData }) => {
   return (
-    <Box>
-      <Heading>Posts</Heading>
+    <Box px={2} py={5}>
+      <Heading mb={9}>Posts</Heading>
       <Flex flexDirection="column">
         <List spacing="3em">
           {allPostsData.map(({ slug, date, title, excerpt }) => (
@@ -23,14 +23,16 @@ const BlogIndex: FunctionComponent<IBlogIndex> = ({ allPostsData }) => {
               <ListItem>
                 <Box>
                   <Link key={slug} href="/[slug]" as={`/${slug}`}>
-                    <Heading
-                      sx={{
-                        fontSize: 'calc(1.6rem + 0.2vw)',
-                        fontWeight: '500',
-                      }}
-                    >
-                      {title}
-                    </Heading>
+                    <a>
+                      <Heading
+                        sx={{
+                          fontSize: 'calc(1.6rem + 0.2vw)',
+                          fontWeight: '500',
+                        }}
+                      >
+                        {title}
+                      </Heading>
+                    </a>
                   </Link>
                   <Box sx={{ my: '0.5rem' }}>{excerpt}</Box>
                   <Text>{date}</Text>
