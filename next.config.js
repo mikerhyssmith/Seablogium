@@ -13,7 +13,7 @@ module.exports = withPlugins([
   [
     withReactSvg,
     {
-      include: path.resolve(__dirname, 'src/assets/svg'),
+      include: path.resolve(__dirname, 'assets/svg'),
       webpack(config, options) {
         return config
       },
