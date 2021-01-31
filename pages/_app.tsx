@@ -7,7 +7,7 @@ import React from 'react'
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Grid h="100vh" templateColumns="15em 1fr" gap={4}>
+      <Grid h="100vh" templateColumns="auto minmax(87%,1fr)" gap={4}>
         <Sidebar />
         <Component {...pageProps} />
       </Grid>
