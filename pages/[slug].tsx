@@ -17,6 +17,7 @@ const components = AllComponents
 
 export default function Posts({ source, frontMatter }) {
   const content = hydrate(source, { components })
+
   return (
     <Box px={2} py={5}>
       <Head>
