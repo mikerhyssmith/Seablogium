@@ -16,7 +16,7 @@ export const Sidebar: FunctionComponent = () => {
         color="white"
       >
         <Center mt="2em">
-          <Box boxShadow="dark-lg" width="60%">
+          <Box boxShadow="dark-lg" width="75%">
             <Icon width="100%" />
           </Box>
         </Center>

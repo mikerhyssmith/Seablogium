@@ -10,7 +10,6 @@ class MyDocument extends Document {
   }
 
   render() {
-    console.log(theme.global)
     return (
       <Html>
         <Head>
