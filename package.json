@@ -36,7 +36,6 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "husky": "^4.3.8",
-    "next-google-fonts": "^1.2.1",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
     "sitemap": "^6.3.5",
