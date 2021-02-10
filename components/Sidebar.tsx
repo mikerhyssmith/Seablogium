@@ -1,7 +1,17 @@
-import { Box, Button, Center, Flex, useColorMode } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  useColorMode,
+  Text,
+  Link,
+} from '@chakra-ui/react'
 import React, { FunctionComponent } from 'react'
 import Icon from '../assets/svg/Seablogium.svg'
 import { BsMoon, BsSun } from 'react-icons/bs'
+import { AiFillTwitterSquare, AiFillLinkedin } from 'react-icons/ai'
+import { FaGithubSquare } from 'react-icons/fa'
 
 export const Sidebar: FunctionComponent = () => {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -15,9 +25,54 @@ export const Sidebar: FunctionComponent = () => {
         w="100%"
         color="white"
       >
-        <Center mt="2em">
-          <Box boxShadow="dark-lg" width="75%">
+        <Center display="flex" flexDirection="column" mt="0.75em">
+          <Box boxShadow="dark-lg" width="80%" marginBottom="2em">
             <Icon width="100%" />
+          </Box>
+
+          <Box width="80%" marginBottom="0.75em">
+            <Text fontSize="sm">
+              The personal blog of{' '}
+              <Link
+                isExternal
+                target="_blank"
+                href="https://twitter.com/mikerhyssmith"
+              >
+                @mikerhyssmith
+              </Link>
+              <br />
+              <br />
+              Posts mostly involve: data, personal finance or the web.
+            </Text>
+          </Box>
+
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            flexDirection="row"
+            width="80%"
+          >
+            <Link
+              href="https://twitter.com/mikerhyssmith"
+              isExternal
+              target="_blank"
+            >
+              <AiFillTwitterSquare size="1.3em" />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/mikerhyssmith/"
+              isExternal
+              target="_blank"
+            >
+              <AiFillLinkedin size="1.3em" />
+            </Link>
+            <Link
+              href="https://github.com/mikerhyssmith"
+              isExternal
+              target="_blank"
+            >
+              <FaGithubSquare size="1.3em" />
+            </Link>
           </Box>
         </Center>
 
