@@ -32,3 +32,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+analysis-scripts/data
+
+.mypy_cache

@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "/Users/mikesmith/Library/Caches/pypoetry/virtualenvs/analysis-scripts-OP-m9-ao-py3.9",
+    "python.linting.pylintEnabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true
+}
