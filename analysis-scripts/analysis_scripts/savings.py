@@ -12,4 +12,6 @@ concatenated = pd.merge(left=sum_by_month, right=income_df, how="left", on="Date
 
 concatenated["percentage"] = concatenated["Saved"]/concatenated["Income"] * 100
 
-print(concatenated)
+minimal_output = concatenated.drop(columns=["Saved", "Income"])
+
+minimal_output.to_json(path_or_buf='./data/output/savings.json', orient='records')
