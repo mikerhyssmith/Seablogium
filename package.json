@@ -16,6 +16,7 @@
     "@next/mdx": "^10.0.5",
     "@nivo/core": "^0.67.0",
     "@nivo/line": "^0.67.0",
+    "@nivo/sankey": "^0.67.0",
     "framer-motion": "^3.2.2-rc.1",
     "gray-matter": "^4.0.2",
     "next": "10.0.5",
