@@ -38,8 +38,8 @@ export default function Posts({ source, frontMatter }) {
       </Breadcrumb>
 
       <Box>
-        <Box sx={{ mt: '4rem' }}>
-          <Box>{content}</Box>
+        <Box sx={{ mt: '2rem' }}>
+          <Box sx={{ px: '4rem' }}>{content}</Box>
         </Box>
       </Box>
     </Box>

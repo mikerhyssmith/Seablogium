@@ -5,35 +5,35 @@ const data = {
   nodes: [
     {
       id: 'Barclays',
-      color: 'hsl(213, 70%, 50%)',
+      color: '#00AFE9',
     },
     {
       id: 'Halifax',
-      color: 'hsl(184, 70%, 50%)',
+      color: '#003399',
     },
     {
       id: 'Monzo',
-      color: 'hsl(194, 70%, 50%)',
+      color: '#14233C',
     },
     {
       id: 'Crowdcube',
-      color: 'hsl(195, 70%, 50%)',
+      color: '#FF5100',
     },
     {
       id: 'Freetrade',
-      color: 'hsl(261, 70%, 50%)',
+      color: '#f7618b',
     },
     {
       id: 'Marcus',
-      color: 'hsl(317, 70%, 50%)',
+      color: '#e07828',
     },
     {
       id: 'Vanguard',
-      color: 'hsl(90, 70%, 50%)',
+      color: '#96151d',
     },
     {
       id: 'Virgin',
-      color: 'hsl(1, 70%, 50%)',
+      color: '#fff',
     },
   ],
   links: [
@@ -56,20 +56,19 @@ const SavingsDestinationsChart = () => {
       data={data}
       margin={{ top: 40, right: 160, bottom: 40, left: 50 }}
       align="justify"
-      colors={{ scheme: 'nivo' }}
+      colors={(d) => d.color}
       nodeOpacity={1}
       nodeThickness={18}
       nodeInnerPadding={3}
       nodeSpacing={24}
       nodeBorderWidth={0}
-      nodeBorderColor={{ from: 'color', modifiers: [['darker', 0.8]] }}
-      linkOpacity={0.5}
-      linkHoverOthersOpacity={0.1}
+      nodeBorderColor={{ from: 'color', modifiers: [['darker', 1]] }}
+      linkOpacity={1}
+      linkHoverOthersOpacity={0.3}
       enableLinkGradient={true}
       labelPosition="outside"
       labelOrientation="vertical"
       labelPadding={16}
-      labelTextColor={{ from: 'color', modifiers: [['darker', 1]] }}
       legends={[
         {
           anchor: 'bottom-right',

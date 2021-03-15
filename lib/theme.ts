@@ -7,7 +7,7 @@ import { mode } from '@chakra-ui/theme-tools'
 const styles = {
   global: (props) => ({
     body: {
-      bg: mode('#FFFFFF', '#171219')(props),
+      bg: mode('#FFFFFF', '#0E0F19')(props),
     },
   }),
 }
@@ -23,6 +23,8 @@ export const theme = extendTheme({
       100: '#f7fafc',
       900: '#136F63',
       bg: '#161925',
+      cntnr_dark: '#272838',
+      cntnr_light: '#EBEBEB',
     },
   },
   fonts: {
