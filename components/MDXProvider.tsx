@@ -26,7 +26,7 @@ export default function MDXCompProvider(props) {
     ),
     a: (props) => <Link as="a" {...props} />,
     ul: (props) => <UnorderedList {...props} />,
-    li: (props) => <ListItem {...props} />,
+    li: (props) => <ListItem ml={4} {...props} />,
     table: (props) => (
       <DarkModeWrapper>
         <Table variant="simple" {...props} />
