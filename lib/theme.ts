@@ -15,7 +15,7 @@ const styles = {
 export const theme = extendTheme({
   styles,
   config: {
-    initialColorMode: 'light',
+    initialColorMode: 'dark',
     useSystemColorMode: true,
   },
   colors: {

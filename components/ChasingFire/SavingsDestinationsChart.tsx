@@ -1,3 +1,4 @@
+import { useColorMode } from '@chakra-ui/react';
 import { ResponsiveSankey } from '@nivo/sankey'
 import { useChartTheme } from '../hooks/useChartTheme'
 
@@ -13,7 +14,7 @@ const data = {
     },
     {
       id: 'Monzo',
-      color: '#14233C',
+      color: '#ff7f50',
     },
     {
       id: 'Crowdcube',
@@ -37,24 +38,29 @@ const data = {
     },
   ],
   links: [
-    { source: 'Barclays', target: 'Crowdcube', value: 0.352962105 },
-    { source: 'Barclays', target: 'Freetrade', value: 4.3908485868 },
-    { source: 'Barclays', target: 'Marcus', value: 40.7412392452 },
-    { source: 'Barclays', target: 'Vanguard', value: 8.0873971821 },
-    { source: 'Halifax', target: 'Virgin', value: 33.5851914043 },
-    { source: 'Monzo', target: 'Crowdcube', value: 0.4706161401 },
-    { source: 'Monzo', target: 'Freetrade', value: 1.0941825256 },
-    { source: 'Monzo', target: 'Marcus', value: 5.8827017508 },
-    { source: 'Monzo', target: 'Vanguard', value: 5.39486106 },
+    { source: 'Barclays', target: 'Crowdcube', value: 0.35 },
+    { source: 'Barclays', target: 'Freetrade', value: 4.39 },
+    { source: 'Barclays', target: 'Marcus', value: 40.74 },
+    { source: 'Barclays', target: 'Vanguard', value: 8.09 },
+    { source: 'Halifax', target: 'Virgin', value: 33.59 },
+    { source: 'Monzo', target: 'Crowdcube', value: 0.47 },
+    { source: 'Monzo', target: 'Freetrade', value: 1.09 },
+    { source: 'Monzo', target: 'Marcus', value: 5.88 },
+    { source: 'Monzo', target: 'Vanguard', value: 5.39 },
   ],
 }
 
 const SavingsDestinationsChart = () => {
-  const chartTheme = useChartTheme()
+  const chartTheme = useChartTheme();
+  const { colorMode } = useColorMode();
+
+  const labelModifier = colorMode === 'dark' ? 'brighter' : 'darker'
+
   return (
     <ResponsiveSankey
       data={data}
-      margin={{ top: 40, right: 160, bottom: 40, left: 50 }}
+      theme={chartTheme}
+      margin={{ top: 20, right: 160, bottom: 20, left: 50 }}
       align="justify"
       colors={(d) => d.color}
       nodeOpacity={1}
@@ -69,6 +75,7 @@ const SavingsDestinationsChart = () => {
       labelPosition="outside"
       labelOrientation="vertical"
       labelPadding={16}
+      labelTextColor={{ from: 'color', modifiers: [[labelModifier, 3]] }}
       legends={[
         {
           anchor: 'bottom-right',

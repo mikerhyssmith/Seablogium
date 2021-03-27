@@ -1,6 +1,7 @@
 import { ResponsiveHeatMapCanvas } from '@nivo/heatmap'
 import { groupBy } from 'lodash'
 import { useChartTheme } from '../hooks/useChartTheme'
+import { useMemo } from 'react';
 
 const months = [
   'Jan',
@@ -85,19 +86,28 @@ const heatMapData = Object.entries(groupBy(data, (d) => d.year)).map(
   }
 )
 
-console.log(heatMapData)
 
 const SavngsHeatmap = () => {
-  const chartTheme = useChartTheme()
+  const chartTheme = useChartTheme();
+
+  const modifiedTheme = useMemo(() => {
+    const updatedTheme = {...chartTheme};
+
+    updatedTheme.axis.domain.line.stroke = "rgba(0,0,0,0%)";
+    updatedTheme.axis.ticks.line.stroke = "rgba(0,0,0,0%)";
+
+    return updatedTheme;
+  }, [chartTheme]);
 
   return (
     <ResponsiveHeatMapCanvas
       data={heatMapData}
-      theme={chartTheme}
+      theme={modifiedTheme}
       keys={months}
       indexBy="year"
       forceSquare={true}
-      margin={{ top: 0, right: 60, bottom: 0, left: 60 }}
+      margin={{ top: 40, right: 20, bottom: 20, left: 40 }}
+      hoverTarget='rowColumn'
       axisTop={{
         orient: 'top',
         tickSize: 5,
@@ -107,23 +117,14 @@ const SavngsHeatmap = () => {
         legendOffset: 36,
       }}
       axisRight={null}
-      axisLeft={{
-        orient: 'left',
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: 'year',
-        legendPosition: 'middle',
-        legendOffset: -40,
-      }}
+      nanColor='rgba(0,0,0,0%)'
       axisBottom={null}
       cellOpacity={1}
       cellBorderColor={{ from: 'color', modifiers: [['darker', 0.4]] }}
-      labelTextColor={{ from: 'color', modifiers: [['darker', 1.8]] }}
-      animate={true}
+      labelTextColor={(d) => { return isFinite(d.value as number) ? '#333333': 'rgba(0,0,0,0%)'}}
+      animate
       motionStiffness={80}
       motionDamping={9}
-      hoverTarget="cell"
       cellHoverOthersOpacity={0.25}
       minValue={0}
       maxValue={53}

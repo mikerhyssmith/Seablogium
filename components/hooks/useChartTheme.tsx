@@ -26,16 +26,24 @@ const baseTheme = {
       strokeWidth: 1,
     },
   },
+  tooltip: {
+    container: {
+      backgroundColor: '#EBEBEB',
+      color: '#333333'
+    }
+  }
 }
 
-export const useChartTheme = (): Theme => {
-  const { colorMode, toggleColorMode } = useColorMode()
+export const useChartTheme = (): Partial<Theme> => {
+  const { colorMode } = useColorMode()
 
   const chartTheme = useMemo(() => {
     const newTheme = { ...baseTheme }
     if (colorMode === 'dark') {
       newTheme.textColor = '#ffff'
     }
+
+    newTheme.tooltip.container = { backgroundColor: "#272838", color: '#ffff'}
 
     return newTheme
   }, [colorMode])

@@ -1,4 +1,4 @@
-import { ResponsiveLine } from '@nivo/line'
+import { ResponsiveLineCanvas } from '@nivo/line'
 import { useChartTheme } from '../hooks/useChartTheme'
 
 const data = [
@@ -58,14 +58,14 @@ const data = [
 ]
 
 const PercentOverTimeChart = () => {
-  const chartTheme = useChartTheme()
-
+  const chartTheme = useChartTheme();
+  
   return (
-    <ResponsiveLine
+    <ResponsiveLineCanvas
       theme={chartTheme}
       data={data}
-      margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-      curve="cardinal"
+      margin={{ top: 50, right: 20, bottom: 50, left: 50 }}
+      curve="monotoneX"
       xScale={{
         type: 'time',
         useUTC: false,
@@ -74,14 +74,17 @@ const PercentOverTimeChart = () => {
       yScale={{
         type: 'linear',
         min: 0,
-        max: 70,
+        max: 55,
         stacked: true,
         reverse: false,
       }}
-      yFormat=" >-.2f"
-      xFormat="time:%Y-%m-%d"
-      axisTop={null}
-      axisRight={null}
+      yFormat={(d) => `${d.toFixed(2)}%`}
+      xFormat="time:%m-%d"
+      enableArea
+      enableCrosshair
+      enableGridX={false}
+      enableGridY={false}
+      lineWidth={3}
       axisBottom={{
         orient: 'bottom',
         tickSize: 5,
@@ -90,7 +93,7 @@ const PercentOverTimeChart = () => {
         legend: 'Date',
         legendOffset: 36,
         legendPosition: 'middle',
-        format: '%d-%m-%y',
+        format: '%b %y',
       }}
       axisLeft={{
         orient: 'left',
