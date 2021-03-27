@@ -12,7 +12,7 @@ const DarkModeWrapper: FC = ({ children }) => {
       background={`brand.cntnr_${colorMode}`}
       p={3}
       borderRadius={1}
-      mb={2}
+      mb={3}
     >
       {children}
     </Container>

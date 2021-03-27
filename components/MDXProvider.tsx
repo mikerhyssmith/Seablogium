@@ -25,7 +25,7 @@ export default function MDXCompProvider(props) {
       <Text as="p" sx={{ mb: '2', lineHeight: '1.5' }} {...props} />
     ),
     a: (props) => <Link as="a" {...props} />,
-    ul: (props) => <UnorderedList {...props} />,
+    ul: (props) => <UnorderedList sx={{ mb: '3' }} {...props} />,
     li: (props) => <ListItem ml={4} {...props} />,
     table: (props) => (
       <DarkModeWrapper>

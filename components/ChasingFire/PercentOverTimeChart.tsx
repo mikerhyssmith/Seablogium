@@ -78,7 +78,7 @@ const PercentOverTimeChart = () => {
         stacked: true,
         reverse: false,
       }}
-      yFormat={(d) => `${d.toFixed(2)}%`}
+      yFormat={(d) => `${d.toFixed(1)}%`}
       xFormat="time:%m-%d"
       enableArea
       enableCrosshair

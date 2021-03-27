@@ -18,7 +18,7 @@ const data = {
     },
     {
       id: 'Crowdcube',
-      color: '#FF5100',
+      color: '#89d8cd',
     },
     {
       id: 'Freetrade',
@@ -38,15 +38,15 @@ const data = {
     },
   ],
   links: [
-    { source: 'Barclays', target: 'Crowdcube', value: 0.35 },
-    { source: 'Barclays', target: 'Freetrade', value: 4.39 },
-    { source: 'Barclays', target: 'Marcus', value: 40.74 },
-    { source: 'Barclays', target: 'Vanguard', value: 8.09 },
-    { source: 'Halifax', target: 'Virgin', value: 33.59 },
-    { source: 'Monzo', target: 'Crowdcube', value: 0.47 },
-    { source: 'Monzo', target: 'Freetrade', value: 1.09 },
-    { source: 'Monzo', target: 'Marcus', value: 5.88 },
-    { source: 'Monzo', target: 'Vanguard', value: 5.39 },
+    { source: 'Barclays', target: 'Crowdcube', value: 0.4 },
+    { source: 'Barclays', target: 'Freetrade', value: 4.4 },
+    { source: 'Barclays', target: 'Marcus', value: 40.7 },
+    { source: 'Barclays', target: 'Vanguard', value: 8.1 },
+    { source: 'Halifax', target: 'Virgin', value: 33.6 },
+    { source: 'Monzo', target: 'Crowdcube', value: 0.5 },
+    { source: 'Monzo', target: 'Freetrade', value: 1.1 },
+    { source: 'Monzo', target: 'Marcus', value: 5.9 },
+    { source: 'Monzo', target: 'Vanguard', value: 5.4 },
   ],
 }
 
