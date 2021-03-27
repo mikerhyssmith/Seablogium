@@ -1,4 +1,4 @@
-import { ResponsiveHeatMapCanvas } from '@nivo/heatmap'
+import { ResponsiveBarCanvas } from '@nivo/bar'
 import { groupBy } from 'lodash'
 import { useChartTheme } from '../hooks/useChartTheme'
 import { useMemo } from 'react';
@@ -71,65 +71,64 @@ const data = [
   const date = new Date(x)
   return {
     year: date.getFullYear().toString(),
-    [months[date.getMonth()]]: Math.round(y),
+    value: Math.round(y),
   }
 })
 
-const heatMapData = Object.entries(groupBy(data, (d) => d.year)).map(
-  ([key, value]) => {
-    const obj = {
-      year: key,
-    }
-    value.forEach(({ year, ...rest }) => Object.assign(obj, rest))
+const barChartData = Object.entries(groupBy(data, (d) => d.year)).map(
+  ([key, values]) => {
+    let sum = 0;
+    values.forEach(({value}) => sum +=value);
 
-    return obj
+    return {
+        year: key.toString(),
+        avg: Math.round(sum/12)
+      }
   }
 )
 
 
-const SavngsHeatmap = () => {
+const YearOnYearIncreaseChart = () => {
   const chartTheme = useChartTheme();
 
-  const modifiedTheme = useMemo(() => {
-    const updatedTheme = {...chartTheme};
-
-    updatedTheme.axis.domain.line.stroke = "rgba(0,0,0,0%)";
-    updatedTheme.axis.ticks.line.stroke = "rgba(0,0,0,0%)";
-
-    return updatedTheme;
-  }, [chartTheme]);
-
   return (
-    <ResponsiveHeatMapCanvas
-      data={heatMapData}
-      theme={modifiedTheme}
-      keys={months}
-      indexBy="year"
-      forceSquare={true}
-      margin={{ top: 40, right: 20, bottom: 20, left: 40 }}
-      hoverTarget='rowColumn'
-      axisTop={{
-        orient: 'top',
+    <ResponsiveBarCanvas
+    data={barChartData}
+    theme={chartTheme}
+    indexBy="year"
+    keys={['avg']}
+    margin={{ top: 20, right: 20, bottom: 30, left: 20 }}
+    pixelRatio={2}
+    padding={0.15}
+    innerPadding={0}
+    minValue="auto"
+    maxValue="auto"
+    groupMode="stacked"
+    layout="vertical"
+    reverse={false}
+    valueScale={{ type: 'linear' }}
+    indexScale={{ type: 'band', round: true }}
+    borderWidth={0}
+    borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
+    axisRight={null}
+    axisLeft={null}
+    axisBottom={{
         tickSize: 5,
         tickPadding: 5,
-        tickRotation: -90,
-        legend: '',
-        legendOffset: 36,
-      }}
-      axisRight={null}
-      nanColor='rgba(0,0,0,0%)'
-      axisBottom={null}
-      cellOpacity={1}
-      cellBorderColor={{ from: 'color', modifiers: [['darker', 0.4]] }}
-      labelTextColor={(d) => { return isFinite(d.value as number) ? '#333333': 'rgba(0,0,0,0%)'}}
-      animate
-      motionStiffness={80}
-      motionDamping={9}
-      cellHoverOthersOpacity={0.25}
-      minValue={10}
-      maxValue={50}
-    />
+        tickRotation: 0,
+        legend: 'Year',
+        legendPosition: 'middle',
+        legendOffset: 36
+    }}
+    enableGridX={false}
+    enableGridY={false}
+    enableLabel={true}
+    labelSkipWidth={12}
+    labelSkipHeight={12}
+    labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
+    isInteractive={true}
+/>
   )
 }
 
-export default SavngsHeatmap
+export default YearOnYearIncreaseChart

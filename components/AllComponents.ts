@@ -5,6 +5,8 @@ import PercentOverTimeStats from './ChasingFire/PercentOverTimeStat'
 import SavingsDestinationsChart from './ChasingFire/SavingsDestinationsChart'
 import DarkModeWrapper from './DarkModeWrapper'
 import SavingsHeatmap from './ChasingFire/SavingsHeatmap'
+import YearOnYearIncrease from './ChasingFire/YearOnYearIncrease'
+
 //import as many components you're using collectively in all your posts
 
 const AllComponents = {
@@ -15,6 +17,7 @@ const AllComponents = {
   SavingsDestinationsChart,
   DarkModeWrapper,
   SavingsHeatmap,
+  YearOnYearIncrease
   // Any other component you want
 }
 

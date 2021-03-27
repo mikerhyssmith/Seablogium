@@ -15,6 +15,7 @@
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@next/mdx": "^10.0.5",
+    "@nivo/bar": "^0.67.0",
     "@nivo/core": "^0.67.0",
     "@nivo/heatmap": "^0.67.0",
     "@nivo/line": "^0.67.0",
