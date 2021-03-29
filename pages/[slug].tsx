@@ -19,7 +19,7 @@ export default function Posts({ source, frontMatter }) {
   const content = hydrate(source, { components })
 
   return (
-    <Box px={2} py={5}>
+    <Box px={2} py={5} overflow="scroll">
       <Head>
         <title>{frontMatter.title}</title>
       </Head>

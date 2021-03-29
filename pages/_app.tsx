@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <MDXProvider>
-        <Grid h="100vh" templateColumns="auto minmax(85%,1fr)" gap={4}>
+        <Grid h="100vh" templateColumns="auto minmax(85%,1fr)" gap={4} overflow="hidden">
           <Sidebar />
           <Component {...pageProps} />
         </Grid>
