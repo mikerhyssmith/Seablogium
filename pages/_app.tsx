@@ -1,19 +1,15 @@
-import '../styles/globals.css'
-import { ChakraProvider, Grid } from '@chakra-ui/react'
-import { Sidebar } from '../components/Sidebar'
-import { theme } from '../lib/theme'
-import MDXProvider from '../components/MDXProvider'
-
+import { ChakraProvider } from '@chakra-ui/react'
 import React from 'react'
+import MDXProvider from '../components/MDXProvider'
+import { theme } from '../lib/theme'
+import '../styles/globals.css'
+import Seablogium from './seablogium'
 
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <MDXProvider>
-        <Grid h="100vh" templateColumns="auto minmax(85%,1fr)" gap={4} overflow="hidden">
-          <Sidebar />
-          <Component {...pageProps} />
-        </Grid>
+        <Seablogium Component={Component} pageProps={pageProps} />
       </MDXProvider>
     </ChakraProvider>
   )
