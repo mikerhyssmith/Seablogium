@@ -6,6 +6,8 @@ import {
   useColorMode,
   Text,
   Link,
+  LinkBox,
+  LinkOverlay,
 } from '@chakra-ui/react'
 import React, { FunctionComponent } from 'react'
 import Icon from '../assets/svg/Seablogium.svg'
@@ -26,9 +28,11 @@ export const Sidebar: FunctionComponent = () => {
         color="white"
       >
         <Center display="flex" flexDirection="column" mt="0.75em">
-          <Box boxShadow="dark-lg" width="80%" marginBottom="2em">
-            <Icon width="100%" />
-          </Box>
+          <LinkBox href="/" width="80%" marginBottom="2em">
+            <Box boxShadow="dark-lg">
+              <Icon width="100%" />
+            </Box>
+          </LinkBox>
 
           <Box width="80%" marginBottom="0.75em">
             <Text fontSize="sm">
