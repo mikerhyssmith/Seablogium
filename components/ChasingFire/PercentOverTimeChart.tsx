@@ -1,19 +1,19 @@
 import { ResponsiveLineCanvas } from '@nivo/line'
 import { useChartTheme } from '../hooks/useChartTheme'
-import { rawSavingsData } from "./rawData";
+import { rawSavingsData } from './rawData'
 
 const data = [
   {
     id: 'savings',
-    data: 
-      rawSavingsData.map(({Date, percentage}) => ({x: Date, y: percentage}))
+    data: rawSavingsData
+      .map(({ Date, percentage }) => ({ x: Date, y: percentage }))
       .map(({ x, y }) => ({ x: new Date(x), y })),
   },
 ]
 
 const PercentOverTimeChart = () => {
-  const chartTheme = useChartTheme();
-  
+  const chartTheme = useChartTheme()
+
   return (
     <ResponsiveLineCanvas
       theme={chartTheme}
@@ -32,7 +32,7 @@ const PercentOverTimeChart = () => {
         stacked: true,
         reverse: false,
       }}
-      yFormat={(d) => `${d.toFixed(1)}%`}
+      yFormat={(d) => `${(d as number).toFixed(1)}%`}
       xFormat="time:%m-%d"
       enableArea
       enableCrosshair
