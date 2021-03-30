@@ -23,7 +23,7 @@ export default function Posts({ source, frontMatter }) {
       <Head>
         <title>{frontMatter.title}</title>
       </Head>
-      <Breadcrumb mb={9} separator={<Heading>/</Heading>}>
+      <Breadcrumb px="1.5rem" mb={9} separator={<Heading>/</Heading>}>
         <BreadcrumbItem>
           <BreadcrumbLink href="/">
             <Heading>Posts</Heading>
@@ -39,7 +39,7 @@ export default function Posts({ source, frontMatter }) {
 
       <Box>
         <Box sx={{ mt: '2rem' }}>
-          <Box sx={{ px: '4rem' }}>{content}</Box>
+          <Box px={{ sm: '2rem', md: '4rem' }}>{content}</Box>
         </Box>
       </Box>
     </Box>
