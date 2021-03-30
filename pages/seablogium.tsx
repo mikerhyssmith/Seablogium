@@ -3,17 +3,15 @@ import React from 'react'
 import { Header } from '../components/Header'
 import { Sidebar } from '../components/Sidebar'
 
-function Seablogium({ Component, pageProps }) {
-  const isMobile = useBreakpointValue({ md: false, sm: true })
-
-  console.log(isMobile)
+function Seablogium({ children }) {
+  const isMobile = useBreakpointValue({ base: false, sm: true })
 
   return (
     <>
       {isMobile && (
         <Grid h="100vh" templateRows="auto 90%" gap={4} overflow="hidden">
           <Header />
-          <Component {...pageProps} />
+          {children}
         </Grid>
       )}
       {!isMobile && (
@@ -24,7 +22,7 @@ function Seablogium({ Component, pageProps }) {
           overflow="hidden"
         >
           <Sidebar />
-          <Component {...pageProps} />
+          {children}
         </Grid>
       )}
     </>

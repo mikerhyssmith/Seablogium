@@ -9,7 +9,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <MDXProvider>
-        <Seablogium Component={Component} pageProps={pageProps} />
+        <Seablogium>
+          <Component {...pageProps} />
+        </Seablogium>
       </MDXProvider>
     </ChakraProvider>
   )
