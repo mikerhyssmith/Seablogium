@@ -1,4 +1,4 @@
-import { useColorMode } from '@chakra-ui/react';
+import { useBreakpointValue, useColorMode } from '@chakra-ui/react'
 import { ResponsiveSankey } from '@nivo/sankey'
 import { useChartTheme } from '../hooks/useChartTheme'
 
@@ -50,9 +50,34 @@ const data = {
   ],
 }
 
+const legend: any = [
+  {
+    anchor: 'bottom-right',
+    direction: 'column',
+    translateX: 130,
+    itemWidth: 100,
+    itemHeight: 14,
+    itemDirection: 'right-to-left',
+    itemsSpacing: 2,
+    itemTextColor: '#999',
+    symbolSize: 14,
+    effects: [
+      {
+        on: 'hover',
+        style: {
+          itemTextColor: '#000',
+        },
+      },
+    ],
+  },
+]
+
 const SavingsDestinationsChart = () => {
-  const chartTheme = useChartTheme();
-  const { colorMode } = useColorMode();
+  const chartTheme = useChartTheme()
+  const { colorMode } = useColorMode()
+  const isMobile = useBreakpointValue({ md: false, sm: true })
+
+  const rightMargin = isMobile ? 40 : 160
 
   const labelModifier = colorMode === 'dark' ? 'brighter' : 'darker'
 
@@ -60,7 +85,7 @@ const SavingsDestinationsChart = () => {
     <ResponsiveSankey
       data={data}
       theme={chartTheme}
-      margin={{ top: 20, right: 160, bottom: 20, left: 50 }}
+      margin={{ top: 20, right: rightMargin, bottom: 20, left: 40 }}
       align="justify"
       colors={(d) => d.color}
       nodeOpacity={1}
@@ -76,27 +101,7 @@ const SavingsDestinationsChart = () => {
       labelOrientation="vertical"
       labelPadding={16}
       labelTextColor={{ from: 'color', modifiers: [[labelModifier, 3]] }}
-      legends={[
-        {
-          anchor: 'bottom-right',
-          direction: 'column',
-          translateX: 130,
-          itemWidth: 100,
-          itemHeight: 14,
-          itemDirection: 'right-to-left',
-          itemsSpacing: 2,
-          itemTextColor: '#999',
-          symbolSize: 14,
-          effects: [
-            {
-              on: 'hover',
-              style: {
-                itemTextColor: '#000',
-              },
-            },
-          ],
-        },
-      ]}
+      legends={isMobile ? legend : []}
     />
   )
 }
