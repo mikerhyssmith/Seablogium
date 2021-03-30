@@ -21,43 +21,49 @@ export const Header: FunctionComponent = () => {
 
   return (
     <Flex
-      as="nav"
+      as="header"
       align="center"
       justify="space-between"
+      direction="column"
       wrap="wrap"
       px="1.5rem"
       py="0.75rem"
       bg="brand.900"
       color="white"
+      height={show ? '100vh' : 'auto'}
     >
-      <Flex align="center" mr={1}>
+      <Flex
+        align="center"
+        justifyContent="space-between"
+        width="100%"
+        height="min-content"
+      >
         <LinkBox href="/" width="20%">
-          <Box boxShadow="dark-lg">
-            <Icon width="100%" />
+          <Box width="3.5em" boxShadow="dark-lg">
+            <Icon />
           </Box>
         </LinkBox>
+        <Box display="block" cursor="pointer" onClick={handleToggle}>
+          <svg
+            fill="white"
+            width="1em"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </Box>
       </Flex>
 
-      <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
-        <svg
-          fill="white"
-          width="1em"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>Menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-        </svg>
-      </Box>
-
-      <Box
-        display={{ sm: show ? 'block' : 'none', md: 'flex' }}
-        width={{ sm: 'full', md: 'auto' }}
+      <Flex
+        display={show ? 'block' : 'none'}
+        width="full"
         alignItems="center"
-        flexGrow={1}
+        justifyContent="space-between"
       >
-        <Box width="80%" marginBottom="0.75em">
-          <Text fontSize="sm">
+        <Box px={20} marginBottom="0.75em">
+          <Text fontSize="lg">
             The personal blog of{' '}
             <Link
               isExternal
@@ -71,62 +77,65 @@ export const Header: FunctionComponent = () => {
             Posts mostly involve: data, personal finance or the web.
           </Text>
         </Box>
+      </Flex>
 
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          flexDirection="row"
-          width="80%"
+      <Center
+        display={show ? 'flex' : 'none'}
+        width="full"
+        justifyContent="space-between"
+        flexDirection="row"
+        alignSelf="flex-end"
+        px={20}
+      >
+        <Link
+          href="https://twitter.com/mikerhyssmith"
+          isExternal
+          target="_blank"
         >
-          <Link
-            href="https://twitter.com/mikerhyssmith"
-            isExternal
-            target="_blank"
+          <AiFillTwitterSquare size="2em" />
+        </Link>
+        <Link
+          href="https://www.linkedin.com/in/mikerhyssmith/"
+          isExternal
+          target="_blank"
+        >
+          <AiFillLinkedin size="2em" />
+        </Link>
+        <Link
+          href="https://github.com/mikerhyssmith"
+          isExternal
+          target="_blank"
+        >
+          <FaGithubSquare size="2em" />
+        </Link>
+      </Center>
+      <Center display={show ? 'block' : 'none'}>
+        {colorMode === 'light' && (
+          <Button
+            display="flex"
+            alignItems="center"
+            size="lg"
+            variant="unstyled"
+            title="Toggle to dark mode"
+            onClick={toggleColorMode}
           >
-            <AiFillTwitterSquare size="1.3em" />
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/mikerhyssmith/"
-            isExternal
-            target="_blank"
-          >
-            <AiFillLinkedin size="1.3em" />
-          </Link>
-          <Link
-            href="https://github.com/mikerhyssmith"
-            isExternal
-            target="_blank"
-          >
-            <FaGithubSquare size="1.3em" />
-          </Link>
-        </Box>
+            <BsMoon size="1.5em" />
+          </Button>
+        )}
 
-        <Center>
-          {colorMode === 'light' && (
-            <Button
-              display="flex"
-              alignItems="center"
-              size="lg"
-              variant="unstyled"
-              onClick={toggleColorMode}
-            >
-              <BsMoon />
-            </Button>
-          )}
-
-          {colorMode === 'dark' && (
-            <Button
-              display="flex"
-              alignItems="center"
-              size="lg"
-              variant="unstyled"
-              onClick={toggleColorMode}
-            >
-              <BsSun />
-            </Button>
-          )}
-        </Center>
-      </Box>
+        {colorMode === 'dark' && (
+          <Button
+            display="flex"
+            alignItems="center"
+            size="lg"
+            variant="unstyled"
+            title="Toggle to light mode"
+            onClick={toggleColorMode}
+          >
+            <BsSun size="1.5em" />
+          </Button>
+        )}
+      </Center>
     </Flex>
   )
 }
